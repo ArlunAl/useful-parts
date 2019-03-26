@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Hamburger Menu</title>
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="./index.min.css">
+</head>
+
+<body>
+  <div class="nav">
+    <div id="menu_icon" class="menu_icon is_close" onclick="switch_menu()">
+      <span class="top"></span>
+      <span class="middle"></span>
+      <span class="bottom"></span>
+    </div>
+  
+    <div id="menu" class="menu is_hidden" onclick="switch_menu()">
+      <ul>
+        <a href="./templates/one.html"><li>one</li></a>
+        <a href="./templates/two.html"><li>two</li></a>
+        <a href="./templates/three.html"><li>three</li></a>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="content first"></div>
+  <div class="content second">
+    <h1>はんばーがーめにゅー</h1>
+  </div>
+  <div class="content third">
+    <p>おいしそうこなみ</p>
+  </div>
+  <div class="content forth"></div>
+  <div class="content fifth"></div>
+
+
+  <script>
+    function switch_menu() {
+      var menu = document.getElementById("menu");
+      menu.classList.toggle("is_shown");
+      menu.classList.toggle("is_hidden");
+
+      var menu_icon = document.getElementById("menu_icon");
+      menu_icon.classList.toggle("is_open");
+      menu_icon.classList.toggle("is_close"); 
+    }
+  </script>
+</body>
