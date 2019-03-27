@@ -10,23 +10,64 @@
 
 
 <body>
-<a class="open" href="#sample">open</a>
-<div id="modal">
+<a class="open1" href="#sample1" onClick="preventScroll.enable()">open1</a>
+<a class="open2" href="#sample2" onClick="preventScroll.enable()">open2</a>
 
-  <div id="sample" class="explanation">
-    <a class="close_overlay" href="#">
+<!-- Please added new windows in "modal" -->
+<div id="modal" class="first_hidden" onclick="remove_first_hidden()">
+
+  <div id="sample1" class="explanation">
+    <a class="close_overlay" href="#" onClick="preventScroll.disable()">
       <span class="span_1"></span>
       <span class="span_2"></span>
     </a>
     <div class="modal_window">
       <p>ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</p>
-      <a class="modal_window-close_button button" href="#">閉じる</a>
+      <a class="modal_window-close_button button" href="#" onClick="preventScroll.disable()">閉じる</a>
+    </div>
+  </div>
+
+  <div id="sample2" class="explanation">
+    <a class="close_overlay" href="#" onClick="preventScroll.disable()">
+      <span class="span_1"></span>
+      <span class="span_2"></span>
+    </a>
+    <div class="modal_window">
+      <p>いいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい</p>
+      <a class="modal_window-close_button button" href="#" onClick="preventScroll.disable()">閉じる</a>
     </div>
   </div>
 
 </div>
-
 </body>
+
+<script>
+  function remove_first_hidden() {
+    var menu = document.getElementById("modal");
+    menu.classList.remove("first_hidden");
+  };
+</script>
+<script>
+  var preventScroll={
+    x:0,
+    y:0,
+    setPos(x=window.pageXOffset,y=window.pageYOffset){
+      this.x=x;
+      this.y=y;
+    },
+    handleEvent(){
+      window.scrollTo(this.x,this.y);
+    },
+    enable(){
+      this.setPos();
+      window.addEventListener("scroll",this);
+    },
+    disable(){
+      window.removeEventListener("scroll",this);
+      this.setPos();
+    }
+  };
+</script>
 </html>
 
 
